@@ -890,7 +890,7 @@ function prefixSearch(bucket, path, prefix, num, pattern, order, context, callba
 
 
 function generateResUrl(bucket, path) {
-	return conf.API_COS_END_POINT+conf.APPID+'/'+bucket+'/'+(path=='/'?"":path);
+	return 'http://' + conf.REGION + '.file.myqcloud.com/files/v2/' + conf.APPID + '/' + bucket + '/' + (path == '/' ? "" : path);
 }
 
 String.prototype.strip = function(){

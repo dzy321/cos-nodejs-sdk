@@ -6,6 +6,7 @@ var path = require('path');
 exports.APPID = '您的APPID';
 exports.SECRET_ID = '您的SECRET_ID';
 exports.SECRET_KEY = '您的SECRET_KEY';
+exports.REGION = '您的Region';
 
 var pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../', 'package.json')));
 var ua = function() {
@@ -17,13 +18,14 @@ exports.EXPIRED_SECONDS = 60;
 
 exports.recvTimeout = 30000;
 exports.USER_AGENT = ua;
-exports.API_COS_END_POINT = 'http://web.file.myqcloud.com/files/v1/';
+// exports.API_COS_END_POINT = 'http://web.file.myqcloud.com/files/v1/';
 
 // timeout单位秒
-exports.setAppInfo = function(appid, secretId, secretKey, timeout) {
+exports.setAppInfo = function(appid, secretId, secretKey, Region, timeout) {
     timeout = timeout || 30;
     module.exports.APPID = appid;
     module.exports.SECRET_ID = secretId;
     module.exports.SECRET_KEY = secretKey;
+    module.exports.REGION = Region;
     module.exports.recvTimeout = timeout * 1000;
 }

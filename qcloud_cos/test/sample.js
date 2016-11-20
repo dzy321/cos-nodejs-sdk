@@ -1,7 +1,7 @@
 //var qcloud_cos = require('qcloud_cos');
 var qcloud_cos = require('../');
 
-qcloud_cos.conf.setAppInfo('1000000', 'AKIiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'wSDlllllllllllllllllllllllllllll');
+qcloud_cos.conf.setAppInfo('1000000', 'AKIiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii', 'wSDlllllllllllllllllllllllllllll', 'region');
 
 qcloud_cos.cos.deleteFile('bucket01', '123/t.mp4', function(ret) {console.log(ret);
 qcloud_cos.cos.upload('./test', 'bucket01', '123/t.mp4', '0666', function(ret) {console.log(ret);

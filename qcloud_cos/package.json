@@ -1,18 +1,22 @@
 {
-  "name": "qcloud_cos",
+  "name": "qcloud_cos_v4",
   "version": "1.0.4",
   "description": "node sdk for qcloud ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test/sample.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tencentyun/cos-nodejs-sdk.git"
   },
   "keywords": [
-    "qcloud"
+    "qcloud",
+    "v4.0"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "author": "tencentyun",
   "license": "MIT",
   "bugs": {

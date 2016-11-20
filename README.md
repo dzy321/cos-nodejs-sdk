@@ -1,5 +1,5 @@
 # qcloud_cos-node
-nodejs sdk for [腾讯云COS服务]
+nodejs sdk for [腾讯云COS服务] v4.0
 
 ## 安装
 npm install qcloud_cos
@@ -7,14 +7,17 @@ npm install qcloud_cos
 ## 指定您的配置
 修改conf.js中的配置信息或者如下设置
 ```javascript
-qcloud_cos.conf.setAppInfo('000000', 'xxxxxxxx', 'xxxxxxx');
+qcloud_cos.conf.setAppInfo('000000', 'xxxxxxxx', 'xxxxxxx', 'region');
+// Region：sh（上海），gz（广州），tj（天津）
 ```
+
+
 
 ## 程序示例
 ```javascript
 var qcloud = require('qcloud_cos');
 
-qcloud.conf.setAppInfo('100000', 'AKIDoooooooooooooooooooooooooooooooo', 'ROllllllllllllllllllllllllllllll');
+qcloud.conf.setAppInfo('100000', 'AKIDoooooooooooooooooooooooooooooooo', 'ROllllllllllllllllllllllllllllll', 'region');
 
 /*
 * 各接口的callback 为单个参数的function： function(ret){}
