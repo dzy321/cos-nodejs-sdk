@@ -1,6 +1,6 @@
 {
   "name": "qcloud_cos_v4",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "node sdk for qcloud ",
   "main": "index.js",
   "scripts": {

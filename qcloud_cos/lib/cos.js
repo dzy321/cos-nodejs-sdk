@@ -98,7 +98,7 @@ function upload(filePath, bucket, dstpath, bizattr, insertOnly, callback) {
 			return;
 		}
 
-		bucket = bucket.strip();
+		bucket = bucket.astrip();
 		dstpath  = fixPath(dstpath);
 		var expired = parseInt(Date.now() / 1000) + conf.EXPIRED_SECONDS;
 		var sign  = auth.signMore(bucket, expired);
@@ -186,7 +186,7 @@ function getSliceSize(size){
  */
 function upload_slice(filePath, bucket, dstpath, bizattr, slice_size, session, insertOnly, callback) {
 
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	dstpath = fixPath(dstpath);
 	slice_size = getSliceSize(slice_size);
 	if (typeof bizattr === 'function') {
@@ -353,9 +353,9 @@ function fixPath(path, type){
 		return;
 	}
 	if(type=='folder'){
-		path = encodeURIComponent(path.strip() + '/').replace(/%2F/g,'/');
+		path = encodeURIComponent(path.astrip() + '/').replace(/%2F/g,'/');
 	}else{
-		path = encodeURIComponent(path.strip()).replace(/%2F/g,'/');
+		path = encodeURIComponent(path.astrip()).replace(/%2F/g,'/');
 	}
 	return path;
 }
@@ -393,7 +393,7 @@ function createFolder(bucket, path, bizattr, callback) {
 	callback = callback || function(ret){console.log(ret)};
 
 	if (typeof callback === 'function') {
-		bucket = bucket.strip();
+		bucket = bucket.astrip();
 		path = fixPath(path,'folder');
 		if(!checkFolderName(path)){
 			callback({'code':COS_FOLDER_ERROR, 'message':'folder name error', 'data':{}});
@@ -442,7 +442,7 @@ function createFolder(bucket, path, bizattr, callback) {
  *                                 入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function list(bucket, path, num, pattern, order, context, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path,'folder');
 	listFiles(bucket, path, num, pattern, order, context, callback);
 }
@@ -517,7 +517,7 @@ function listFiles(bucket, path, num, pattern, order, context, callback) {
  *                                 入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function updateFolder(bucket, path, bizattr, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path,'folder');
 	update(bucket, path, bizattr, callback);
 }
@@ -591,7 +591,7 @@ function update(bucket, path, bizattr, callback) {
  *                                 入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function statFolder(bucket, path, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path, 'folder');
 	stat(bucket, path, callback);
 }
@@ -643,7 +643,7 @@ function stat(bucket, path, callback) {
  *                                 入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function deleteFolder(bucket, path, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path,'folder');
 	del(bucket, path, callback);
 }
@@ -701,7 +701,7 @@ function del(bucket, path, callback) {
  *                                 入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function statFile(bucket, path, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path);
 	stat(bucket, path, callback);
 }
@@ -715,7 +715,7 @@ function statFile(bucket, path, callback) {
  *                                 入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function deleteFile(bucket, path, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path);
 	del(bucket, path, callback);
 }
@@ -734,7 +734,7 @@ function deleteFile(bucket, path, callback) {
  *                                 		入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function updateFile(bucket, path, bizattr, authority, custom_headers, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path);
 	if (typeof bizattr === 'function') {
 		callback = bizattr;
@@ -816,7 +816,7 @@ function updateFile(bucket, path, bizattr, authority, custom_headers, callback) 
  *                                 		入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function moveFile(bucket, path, destPath, overWrite, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path);
 
 	callback = callback || function(ret){ console.log(ret); };
@@ -876,7 +876,7 @@ function moveFile(bucket, path, destPath, overWrite, callback) {
  *                                 入参为ret：{'code':0,'message':'ok','data':{...}}
  */
 function prefixSearch(bucket, path, prefix, num, pattern, order, context, callback) {
-	bucket = bucket.strip();
+	bucket = bucket.astrip();
 	path = fixPath(path);
 	if (path == '') {
 		path = prefix;
@@ -893,7 +893,7 @@ function generateResUrl(bucket, path) {
 	return 'http://' + conf.REGION + '.file.myqcloud.com/files/v2/' + conf.APPID + '/' + bucket + '/' + (path == '/' ? "" : path);
 }
 
-String.prototype.strip = function(){
+String.prototype.astrip = function(){
 	return this.replace(/(^\/*)|(\/*$)/g, '');
 }
 String.prototype.lstrip = function(){
